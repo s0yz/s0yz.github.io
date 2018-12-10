@@ -4,6 +4,7 @@ Playable at https://s0yz.github.io/
 
 ---
  tags:
+  - snake game
   - javascript
   - p5
 ---
