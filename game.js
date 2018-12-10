@@ -58,7 +58,7 @@ Game.prototype.showMessage = function() {
   textAlign(CENTER, CENTER);
   stroke(50, 50, 50);
   strokeWeight(1);
-  fill(255, 255, 255, 200);
+  fill(255, 255, 255, 225);
   let action = this.first ? "start" : "restart";
   text("Click to " + action, CAN_W * 0.5, CAN_H * 0.5);
 }
