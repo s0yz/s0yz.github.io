@@ -14,5 +14,17 @@ function draw() {
 }
 
 function keyReleased() {
-  game.snake.turn(keyCode);
+  switch(keyCode) {
+	case vkLEFT:
+  	case vkUP:
+	case vkRIGHT:
+  	case vkDOWN:
+	  game.snake.turn(keyCode);
+	  break;
+  }  
+}
+
+function mousePressed() {
+	if (!game.isStarted)
+	  game.restart();
 }

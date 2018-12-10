@@ -13,21 +13,23 @@ Snake.prototype.pos = function(i) {
 
 Snake.prototype.show = function() {
   fill(75, 255, 75);
+  stroke(0, 50, 0);
+  strokeWeight(2);
   for (i = 0; i < this.body.length; i++) {
-  	rect(this.pos(i).x, this.pos(i).y, SCALE, SCALE);
+    rect(this.pos(i).x, this.pos(i).y, SCALE, SCALE);
   }
 }
 
 Snake.prototype.update = function() {
   let head = p5.Vector.add(this.head, this.dir);
   for (i = this.body.length - 1; i > 0 ; i--) {
-  	this.body[i].set(this.body[i - 1]);
+    this.body[i].set(this.body[i - 1]);
     if (head.equals(this.body[i]))
-			this.alive = false;
+      this.alive = false;
   }
   this.head.add(this.dir);
   if (this.isOut())
-			this.alive = false;
+    this.alive = false;
 }
 
 Snake.prototype.grow = function() {
@@ -37,27 +39,26 @@ Snake.prototype.grow = function() {
 Snake.prototype.turn = function(dir) {
   let next_dir = createVector(0, 0);
   switch(keyCode) {
-		case LEFT:
+    case vkLEFT:
       next_dir.x = -1;
-			break;
-  	case UP:
+      break;
+  	case vkUP:
       next_dir.y = -1;
-			break;
-		case RIGHT:
+      break;
+    case vkRIGHT:
       next_dir.x = 1;
-			break;
-  	case DOWN:
+      break;
+    case vkDOWN:
       next_dir.y = 1;
-			break;
+      break;
   }
-  if (this.canTurn(next_dir)) {
-  	this.dir.set(next_dir);
+  if (next_dir != 0 && this.canTurn(next_dir)) {
+    this.dir.set(next_dir);
   }
 }
 
 Snake.prototype.canTurn = function(dir) {
-  let sum = p5.Vector.add(this.dir, dir);
-	return !sum.equals(VECTOR00);
+  return !p5.Vector.add(this.dir, dir).equals(VECTOR00);
 }
 
 Snake.prototype.isAt = function(pos) {
