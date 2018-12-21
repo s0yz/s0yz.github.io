@@ -1,4 +1,4 @@
-// Game's dimensions (snake and froot )
+// Game's dimensions (when snake and froot are 1 pixel)
 const GAME_W = 32;
 const GAME_H = 32;
 

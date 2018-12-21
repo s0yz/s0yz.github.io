@@ -1,9 +1,10 @@
 let game;
 
 function setup() {
+  game = new Game();
   createCanvas(CAN_W, CAN_H);
   frameRate(FRAMERATE);
-  game = new Game();
+  colorMode(HSB, 1024);
   strokeWeight(2);
 }
 
@@ -15,11 +16,11 @@ function draw() {
 
 function keyReleased() {
   switch(keyCode) {
-	case vkLEFT:
+	  case vkLEFT:
   	case vkUP:
-	case vkRIGHT:
+	  case vkRIGHT:
   	case vkDOWN:
-	  game.snake.turn(keyCode);
+	    game.snake.turn(keyCode);
 	  break;
   }  
 }

@@ -4,6 +4,8 @@ class Snake {
     this.head = createVector(x, y);
     this.body = [ this.head ];
     this.alive = true;
+    this.turning = false;
+    this.hue = 255;
   }
 }
 
@@ -12,7 +14,7 @@ Snake.prototype.pos = function(i) {
 }
 
 Snake.prototype.show = function() {
-  fill(75, 255, 75);
+  fill(this.hue, 1024, 1024);
   stroke(0, 50, 0);
   strokeWeight(2);
   for (i = 0; i < this.body.length; i++) {
@@ -21,6 +23,7 @@ Snake.prototype.show = function() {
 }
 
 Snake.prototype.update = function() {
+
   let head = p5.Vector.add(this.head, this.dir);
   for (i = this.body.length - 1; i > 0 ; i--) {
     this.body[i].set(this.body[i - 1]);
@@ -28,32 +31,43 @@ Snake.prototype.update = function() {
       this.alive = false;
   }
   this.head.add(this.dir);
+  this.turning = false;
   if (this.isOut())
     this.alive = false;
 }
 
+Snake.prototype.updateHue = function() {
+  console.log("hi");
+  this.hue += 1;
+  if (this.hue > 1024) this.hue = 0;
+}
+
 Snake.prototype.grow = function() {
   this.body.push(createVector(this.dir));
+  this.updateHue();
 }
 
 Snake.prototype.turn = function(dir) {
-  let next_dir = createVector(0, 0);
-  switch(keyCode) {
-    case vkLEFT:
-      next_dir.x = -1;
-      break;
-  	case vkUP:
-      next_dir.y = -1;
-      break;
-    case vkRIGHT:
-      next_dir.x = 1;
-      break;
-    case vkDOWN:
-      next_dir.y = 1;
-      break;
-  }
-  if (next_dir != 0 && this.canTurn(next_dir)) {
-    this.dir.set(next_dir);
+  if (!this.turning) {
+    let next_dir = createVector(0, 0);
+    switch(keyCode) {
+      case vkLEFT:
+        next_dir.x = -1;
+        break;
+    	case vkUP:
+        next_dir.y = -1;
+        break;
+      case vkRIGHT:
+        next_dir.x = 1;
+        break;
+      case vkDOWN:
+        next_dir.y = 1;
+        break;
+    }
+    if (next_dir != 0 && this.canTurn(next_dir)) {
+      this.turning = true;
+      this.dir.set(next_dir);
+    }
   }
 }
 

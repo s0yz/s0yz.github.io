@@ -34,9 +34,9 @@ Game.prototype.showScore = function() {
   textSize(SCORE_SIZE);
   textFont(SCORE_FONT);
   textAlign(LEFT);
-  stroke(50, 50, 50, 175);
+  stroke(0, 1024, 0, 512);
   strokeWeight(1);
-  fill(255, 255, 255, 175);
+  fill(0, 0, 1024, 702);
   text(this.score, SCORE_X, SCORE_Y);
 }
 
@@ -56,9 +56,9 @@ Game.prototype.showMessage = function() {
   textSize(40);
   textFont(40);
   textAlign(CENTER, CENTER);
-  stroke(50, 50, 50);
+  stroke(0, 1024, 0, 512);
   strokeWeight(1);
-  fill(255, 255, 255, 225);
+  fill(0, 0, 1024, 992);
   let action = this.first ? "start" : "restart";
   text("Click to " + action, CAN_W * 0.5, CAN_H * 0.5);
 }
