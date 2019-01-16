@@ -7,7 +7,7 @@ const GAME_H = 32;
 // will be identical to those of the game.
 const SCALE = 20;
 
-const FRAMERATE = 15;
+const FRAMERATE = 60;
 
 const IS_WEBGL = false;
 
