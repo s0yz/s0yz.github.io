@@ -10,7 +10,7 @@ class Game {
 
 Game.prototype.update = function() {
   if (this.isStarted) {
-    if (frameCount % 10 == 0) {
+    if (frameCount % 2 == 0) {
       this.snake.update();
       if (!this.snake.alive)      
         this.isStarted = this.first = falsframeCount
