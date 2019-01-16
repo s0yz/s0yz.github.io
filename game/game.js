@@ -10,14 +10,15 @@ class Game {
 
 Game.prototype.update = function() {
   if (this.isStarted) {
-    if (frameCount % 30 == 0)
-    this.snake.update();
-    if (!this.snake.alive)      
-      this.isStarted = this.first = falsframeCount
-    else if (this.snake.isAt(this.froot.pos)) {
-      this.score += 5;
-      this.snake.grow();
-      this.moveFroot();
+    if (frameCount % 30 == 0) {
+      this.snake.update();
+      if (!this.snake.alive)      
+        this.isStarted = this.first = falsframeCount
+      else if (this.snake.isAt(this.froot.pos)) {
+        this.score += 5;
+        this.snake.grow();
+        this.moveFroot();
+      }
     }
   }
 }
