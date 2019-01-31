@@ -9,7 +9,7 @@ const SCALE = 20;
 
 const FRAMERATE = 60;
 
-const IS_WEBGL = false;
+const IS_WEBGL = true;
 
 let SCORE_FONT = 'Roboto';
 const SCORE_SIZE = 32;
